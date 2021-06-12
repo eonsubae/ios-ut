@@ -55,3 +55,19 @@ func testSignUpFormModel_WhenCreated_EmailShouldHaveValidFormat() {
   XCTAssertTrue(isEmailFormatValid, "Provided valid email address does not have a valid format")
 }
 ```
+
+------
+
+Testing Pyramid
+* iOS 테스트에는 크게 세 종류의 테스트가 있다
+
+Unit Test
+* 매우 작은 단위의 테스트로 코드의 특정 부분만 테스트한다 
+* 데이터 베이스, 네트워크 통신 같은 외부 의존성이 없다
+* 대신 Fake database나 Mock을 활용한다
+
+Integration Test
+* Fake database나 Mock이 아닌 실제 데이터베이스 혹은 네트워크 통신을 하면서 테스트한다
+
+UI Test
+* UI Interaction이나 Behavior를 자동화해서 테스트한다
