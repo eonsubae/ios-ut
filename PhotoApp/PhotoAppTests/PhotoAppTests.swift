@@ -1,26 +1,32 @@
-//
-//  PhotoAppTests.swift
-//  PhotoAppTests
-//
-//  Created by KRENGLSSEAN on 2021/06/12.
-//
-
 import XCTest
 @testable import PhotoApp
 
 class PhotoAppTests: XCTestCase {
-
+    
+    static var classInstanceCounter = 0
+    
+    override class func setUp() {
+        super.setUp()
+    }
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        PhotoAppTests.classInstanceCounter += 1
     }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
+    
+    override class func tearDown() {
+        super.tearDown()
+    }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testExample1() throws {
+        print("Accessing class level information. Running from Instance # \(PhotoAppTests.classInstanceCounter)")
+    }
+    
+    func testExample2() throws {
+        print("Accessing class level information. Running from Instance # \(PhotoAppTests.classInstanceCounter)")
     }
 
     func testPerformanceExample() throws {

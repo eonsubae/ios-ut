@@ -120,3 +120,87 @@ TDD의 네 가지 스텝
 
 ------
 
+The Default Unit Test Case Class Explained
+
+![#test-cases](./imgs/testcases.png)
+* setUp 메서드는 각 유닛 테스트 함수가 실행되기 전에 호출된다
+* 각 유닛 테스트 함수의 실행이 끝나면 tearDown 메서드가 호출된다
+* 이 과정을 계속 반복한다
+* setUp이나 tearDown을 class method로 override하면 첫 테스트 메서드가 호출될 때 딱 한 번만 호출된다
+
+![#override-setup](./imgs/override-setup.png)
+
+```swift
+class PhotoAppTests: XCTestCase {
+    override class func setUp() { // 첫 테스트 메서드가 호출될 때 한 번만 호출
+        super.setUp()
+    }
+
+    override func setUpWithError() throws { // 테스트 메서드를 시작하기 전에 매번 호출
+        // Put setup code here. This method is called before the invocation of each test method in the class.
+    }
+
+    override func tearDownWithError() throws { // 테스트 메서드가 끝날 때 매번 호출
+        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    }
+
+    override class func tearDown() { // 더 이상 테스트할 메서드가 없을 때 한 번만 호출
+        super.tearDown()
+    }
+
+    func testExample() throws {
+        // This is an example of a functional test case.
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    }
+
+    func testPerformanceExample() throws {
+        // This is an example of a performance test case.
+        self.measure {
+            // Put the code you want to measure the time of here.
+        }
+    }
+
+}
+```
+
+각 테스트 메서드에서 특정 값을 공유하기
+* static 변수를 만들어 특정 값을 각 테스트 케이스에서 공유할 수 있다
+
+```swift
+class PhotoAppTests: XCTestCase {
+    
+    static var classInstanceCounter = 0
+    
+    override class func setUp() {
+        super.setUp()
+    }
+    
+    override func setUpWithError() throws {
+        PhotoAppTests.classInstanceCounter += 1
+    }
+
+    override func tearDownWithError() throws {
+        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    }
+    
+    override class func tearDown() {
+        super.tearDown()
+    }
+
+    func testExample1() throws {
+        print("Accessing class level information. Running from Instance # \(PhotoAppTests.classInstanceCounter)")
+    }
+    
+    func testExample2() throws {
+        print("Accessing class level information. Running from Instance # \(PhotoAppTests.classInstanceCounter)")
+    }
+
+    func testPerformanceExample() throws {
+        // This is an example of a performance test case.
+        self.measure {
+            // Put the code you want to measure the time of here.
+        }
+    }
+
+}
+```
