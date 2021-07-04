@@ -136,11 +136,11 @@ class PhotoAppTests: XCTestCase {
         super.setUp()
     }
 
-    override func setUp() { // 테스트 메서드를 시작하기 전에 매번 호출
+    override func setUpWithError() throws { // 테스트 메서드를 시작하기 전에 매번 호출
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 
-    override func tearDown() { // 테스트 메서드가 끝날 때 매번 호출
+    override func tearDownWithError() throws { // 테스트 메서드가 끝날 때 매번 호출
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
@@ -148,7 +148,7 @@ class PhotoAppTests: XCTestCase {
         super.tearDown()
     }
 
-    func testExample() {
+    func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
@@ -175,11 +175,11 @@ class PhotoAppTests: XCTestCase {
         super.setUp()
     }
     
-    override func setUp() {
+    override func setUpWithError() throws {
         PhotoAppTests.classInstanceCounter += 1
     }
 
-    override func tearDown() {
+    override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
@@ -187,11 +187,11 @@ class PhotoAppTests: XCTestCase {
         super.tearDown()
     }
 
-    func testExample1() {
+    func testExample1() throws {
         print("Accessing class level information. Running from Instance # \(PhotoAppTests.classInstanceCounter)")
     }
     
-    func testExample2() {
+    func testExample2() throws {
         print("Accessing class level information. Running from Instance # \(PhotoAppTests.classInstanceCounter)")
     }
 
@@ -204,3 +204,83 @@ class PhotoAppTests: XCTestCase {
 
 }
 ```
+
+---
+
+The addTeardownBlock()
+
+유닛테스트가 끝났을 때
+* 상태값을 초기화하거나 특정 자원을 해제해야 할 때가 있다
+* 이 때 유닛테스트 함수에 addTeardownBlock를 추가할 수 있다
+
+```swift
+func testExample() throws {
+  print("**** Test method is called")
+  addTeardownBlock {
+      // Called when testExample() ends.
+      print("**** TeardownBlock is called when test method ends")
+  }
+}
+```
+
+setUp, tearDown 메서드들과 실행 순서 알아보기
+```swift
+import XCTest
+
+class TearDownTestExample: XCTestCase {
+    
+    override class func setUp() {
+        print("**** Class setUp() method is called") // 1.
+    }
+
+    override func setUpWithError() throws {
+        print("**** Instance setUpWithError() method is called") // 2.
+    }
+    
+    override class func tearDown() {
+        print("**** Class tearDown() method is called") // 6.
+    }
+    
+    override func tearDownWithError() throws {
+        print("**** Instance tearDownWithError() method is called") // 5.
+    }
+
+    func testExample() throws {
+       print("**** Test method is called") // 3.
+        addTeardownBlock { // 4.
+            // Called when testExample() ends.
+            print("**** TeardownBlock is called when test method ends")
+        }
+    }
+
+}
+```
+1. 클래스 메서드로 오버라이드한 setUp이 가장 먼저 호출된다
+2. setUpWithError가 각 테스트 메서드가 호출되기 전에 매번 호출된다
+3. 테스트 메서드(여기서는 testExample)이 호출된다
+4. testExample안에 작성된 addTeardownBlock안의 코드가 호출된다
+5. tearDownWithError가 각 테스트 메서드가 호출된 후에 매번 호출된다
+6. 클래스 메서드로 오버라이드한 tearDown이 모든 테스트 메서드가 끝난 뒤에 호출된다
+
+유저를 로컬 스토리지에 생성하고 테스트가 끝난 뒤 제거하는 예제
+```swift
+func testUserService_WhenGivenValidRecord_CanSuccessfullyPersistToStorage() throws {
+        
+  // Arrange
+  let userRecord = User(firstname: "Sean", lastName: "Bae")
+  
+  // Act
+  let storedRecord = sut.storeRecord(userRecord) // 1.
+  
+  addTeardownBlock {
+      sut.deleteRecord(storedRecord) // 3.
+  }
+  
+  // Assert
+  XCTAssertNotNil(storedRecord) // 2.
+
+}
+```
+1. 유저를 로컬 스토리지에 저장한다
+2. XCTAssertNotNil로 저장한 유저가 있는지 체크한다
+3. 테스트가 끝난 뒤 addTeardownBlock로 로컬 스토리지에 저장된 유저를 삭제한다
