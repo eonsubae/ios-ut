@@ -9,11 +9,11 @@ class PhotoAppTests: XCTestCase {
         super.setUp()
     }
     
-    override func setUpWithError() throws {
+    override func setUp() {
         PhotoAppTests.classInstanceCounter += 1
     }
 
-    override func tearDownWithError() throws {
+    override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     

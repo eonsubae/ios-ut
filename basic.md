@@ -8,8 +8,8 @@ func isEmailValid(email: String) -> Bool {
   // A function in the app needs to be tested
 }
 ```
-* 이메일 유효성을 검증하는 함수가 있다고 가정하자
-* 이 하나의 함수에 대해서만 여러 테스트를 작성할 수 있다
+* 이메일의 유효성을 검증하는 함수가 있다고 가정하자
+* 이 하나의 함수에도 여러 테스트를 작성할 수 있다
 * 이메일 데이터를 인자로 보내고 있다
   - 여러 데이터 타입으로 테스트
   - 같은 데이터 타입이지만 내부 로직상 invalid한 인자로 테스트
@@ -21,8 +21,8 @@ func isEmailValid(email: String) -> Bool {
   - 유닛 테스트는 동시에 하나의 함수에만 적용해야 한다
 
 Xcode Test Framework
-* Xcode는 테스트를 위한 기능을 제공해준다
-* 작성된 테스트가 의도한대로 동작하는지 체크는 물론 성능까지 테스트해준다
+* Xcode는 테스트를 위한 기능을 제공한다
+* 작성한 테스트가 의도한대로 동작하는지 체크는 물론 성능까지 테스트해준다
 * 통과한 테스트는 녹색으로, 통과하지 못한 테스트는 빨간색으로 표시된다
 
 테스트 함수 예제
@@ -59,7 +59,7 @@ func testSignUpFormModel_WhenCreated_EmailShouldHaveValidFormat() {
 ------
 
 Testing Pyramid
-* iOS 테스트에는 크게 세 종류의 테스트가 있다
+* iOS 테스트에는 크게 세 종류가 있다
 
 Unit Test
 * 매우 작은 단위의 테스트로 코드의 특정 부분만 테스트한다 
@@ -136,11 +136,11 @@ class PhotoAppTests: XCTestCase {
         super.setUp()
     }
 
-    override func setUpWithError() throws { // 테스트 메서드를 시작하기 전에 매번 호출
+    override func setUp() { // 테스트 메서드를 시작하기 전에 매번 호출
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 
-    override func tearDownWithError() throws { // 테스트 메서드가 끝날 때 매번 호출
+    override func tearDown() { // 테스트 메서드가 끝날 때 매번 호출
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
@@ -148,7 +148,7 @@ class PhotoAppTests: XCTestCase {
         super.tearDown()
     }
 
-    func testExample() throws {
+    func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
@@ -175,11 +175,11 @@ class PhotoAppTests: XCTestCase {
         super.setUp()
     }
     
-    override func setUpWithError() throws {
+    override func setUp() {
         PhotoAppTests.classInstanceCounter += 1
     }
 
-    override func tearDownWithError() throws {
+    override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
@@ -187,11 +187,11 @@ class PhotoAppTests: XCTestCase {
         super.tearDown()
     }
 
-    func testExample1() throws {
+    func testExample1() {
         print("Accessing class level information. Running from Instance # \(PhotoAppTests.classInstanceCounter)")
     }
     
-    func testExample2() throws {
+    func testExample2() {
         print("Accessing class level information. Running from Instance # \(PhotoAppTests.classInstanceCounter)")
     }
 
