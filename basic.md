@@ -300,3 +300,25 @@ class XXXTests: XCTestCase {
 ```
 * @testable import 애플리케이션 모듈 이름
   - 이 라인을 추가하면 애플리케이션에 있는 클래스 등 임포트한 모듈의 자원에 접근할 수 있다
+
+---
+
+Ways to Run Unit Test in Xcode
+
+개별 메서드 실행
+![#individual-test-method](./imgs/individual-test-method.png)
+* Xcode에서 개별 테스트 메서드의 좌측에 있는 마름모를 누르면 해당 메서드만 테스트할 수 있다
+* 만약 클래스 안에 다른 테스트 메서드가 있다면 클래스 옆의 마름모는 -인 상태일 것이다
+
+테스트 네비게이터 이용하기
+
+![#test-navigator](./imgs/test-navigator.png)
+* 테스트 네비게이터에서도 동일하게 동작한다
+* 테스트 케이스 목록을 보고 싶다면 네비게이터를 이용하는 것이 좋다
+
+클래스 안의 모든 케이스가 테스트 된 경우
+![#all-tested](./imgs/all-tested.png)
+* 클래스의 모든 테스트 케이스가 통과되면 클래스 옆의 마름모가 녹색 체크 표시로 변경된다
+
+---
+

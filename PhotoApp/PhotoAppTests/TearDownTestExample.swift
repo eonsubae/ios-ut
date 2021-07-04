@@ -29,16 +29,16 @@ class TearDownTestExample: XCTestCase {
     func testUserService_WhenGivenValidRecord_CanSuccessfullyPersistToStorage() throws {
         
         // Arrange
-        let userRecord = User(firstname: "Sean", lastName: "Bae")
+//        let userRecord = User(firstname: "Sean", lastName: "Bae")
         
         // Act
-        let storedRecord = sut.storeRecord(userRecord)
+//        let storedRecord = sut.storeRecord(userRecord)
         
         addTeardownBlock {
-            sut.deleteRecord(storedRecord)
+//            sut.deleteRecord(storedRecord)
         }
         
         // Assert
-        XCTAssertNotNil(storedRecord)
+//        XCTAssertNotNil(storedRecord)
     }
 }
