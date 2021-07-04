@@ -16,6 +16,7 @@
 		428C6771267443BE005AB39D /* PhotoAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428C6770267443BE005AB39D /* PhotoAppTests.swift */; };
 		428C677C267443BE005AB39D /* PhotoAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428C677B267443BE005AB39D /* PhotoAppUITests.swift */; };
 		42C79EF826914AC60086CE64 /* TearDownTestExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C79EF726914AC60086CE64 /* TearDownTestExample.swift */; };
+		42C79EFD2691558D0086CE64 /* OrderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C79EFC2691558D0086CE64 /* OrderTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		428C677B267443BE005AB39D /* PhotoAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAppUITests.swift; sourceTree = "<group>"; };
 		428C677D267443BE005AB39D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42C79EF726914AC60086CE64 /* TearDownTestExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TearDownTestExample.swift; sourceTree = "<group>"; };
+		42C79EFC2691558D0086CE64 /* OrderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				428C6770267443BE005AB39D /* PhotoAppTests.swift */,
 				428C6772267443BE005AB39D /* Info.plist */,
 				42C79EF726914AC60086CE64 /* TearDownTestExample.swift */,
+				42C79EFC2691558D0086CE64 /* OrderTest.swift */,
 			);
 			path = PhotoAppTests;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42C79EFD2691558D0086CE64 /* OrderTest.swift in Sources */,
 				42C79EF826914AC60086CE64 /* TearDownTestExample.swift in Sources */,
 				428C6771267443BE005AB39D /* PhotoAppTests.swift in Sources */,
 			);

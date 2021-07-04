@@ -322,3 +322,44 @@ Ways to Run Unit Test in Xcode
 
 ---
 
+The Default Order of Unit Tests
+
+유닛 테스트의 실행 순서
+* 기본적으로 엑스코드는 알파벳 순(혹은 렉시컬 순이라 한다)으로 테스트를 실행시킨다
+
+```swift
+import XCTest
+
+class OrderTest: XCTestCase {
+
+    override func setUp() {
+        print("setUp")
+    }
+    
+    override func tearDown() {
+        print("tearDown")
+    }
+
+    func testA() {
+        print("Running Test A")
+    }
+
+    func testB() {
+        print("Running Test B")
+    }
+    
+    func testC() {
+        print("Running Test C")
+    }
+    
+    func testD() {
+        print("Running Test D")
+    }
+}
+```
+* testA, testB, testC, testD 순으로 실행된다
+* 정확히는 setUp -> testA(B, C, D) -> tearDown 순으로 실행을 반복한다
+* 만약 testD와 testA의 코드상 위치를 바꿔도 실행순서는 똑같다
+
+---
+
