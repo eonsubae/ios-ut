@@ -418,3 +418,38 @@ Test -> Info 탭에서 확인할 수 있다
 생략할 테스트 메서드라면 skip_을 앞에 붙여주기
 ![#skip-naming](./imgs/skip-naming.png)
 * 엑스코드도 test로 시작하지 않기 때문에 자동으로 제외시켜주고, 다른 개발자도 이 테스트 메서드는 생략한다는 것을 명확하게 알 수 있다
+
+---
+
+Viewing Test Results
+
+테스트 결과를 확인하는 방법들
+1. 콘솔에서 보기
+
+```swift
+func testA() {
+    print("Running Test A")
+    XCTFail("Always failing unit test")
+}
+```
+* 우선 한 테스트를 항상 실패하도록 만든다
+* 테스트를 돌린 후 다음 스크린샷과 동일한 메뉴를 찾아 선택한다
+
+![#test-console](./imgs/test-console.png)
+* 콘솔에서 테스트 결과를 자세히 확인할 수 있다
+
+---
+
+2. 테스트 네비게이터에서 보기
+* 성공 및 실패 목록을 한눈에 볼 수 있다
+
+![#test-navi](./imgs/test-navi.png)
+
+--- 
+
+3. 테스트 리포트를 확인하기
+* 그동안 테스트를 돌렸던 결과들을 볼 수 있다
+
+![#test-report](./imgs/test-report.png)
+
+---

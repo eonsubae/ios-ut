@@ -37,11 +37,6 @@
                BlueprintName = "PhotoAppTests"
                ReferencedContainer = "container:PhotoApp.xcodeproj">
             </BuildableReference>
-            <SkippedTests>
-               <Test
-                  Identifier = "OrderTest/testA()">
-               </Test>
-            </SkippedTests>
          </TestableReference>
          <TestableReference
             skipped = "NO">

@@ -10,8 +10,9 @@ class OrderTest: XCTestCase {
         print("tearDown")
     }
 
-    func skip_testA() {
+    func testA() {
         print("Running Test A")
+        XCTFail("Always failing unit test")
     }
 
     func testB() {
