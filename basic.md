@@ -363,3 +363,35 @@ class OrderTest: XCTestCase {
 
 ---
 
+Unit Test Naming Requirements
+
+유닛 테스트 네이밍 필수사항들
+1. 함수 이름은 test로 시작해야 한다
+```swift
+func testColorlsRed() {
+  // Some code here
+}
+```
+* 만약 이름이 test로 시작하지 않으면 엑스코드는 테스트를 실행하지 않는다
+
+2. 테스트 메서드는 어떤 인자도 받지 않는다
+3. 테스트 메서드는 어떤 값도 반환하지 않는다
+
+베스트 프랙티스
+* 반드시 따라야하는 것은 아니지만 다음과 같은 형식으로 유닛 테스트 이름을 작성하는 것이 좋다
+
+```swift
+func test<System Under Test>_<Condition Or State Change>_<Expected Result>() {
+}
+```
+* 유닛 테스트는 함수 내부의 내용이 아니라 함수의 이름만 보고도 어떤 역할을 하는지 파악할 수 있어야한다
+
+예시
+```swift
+func testSignupFormModel_WhenInformationProvided_PasswordShouldMatchRepeatPassword() {
+}
+```
+* 물론 함수 이름이 너무 길다고 생각할 수도 있지만, 길어도 의미를 명확하게 전달하는 것이 더 좋다
+
+---
+
