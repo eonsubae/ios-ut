@@ -284,3 +284,19 @@ func testUserService_WhenGivenValidRecord_CanSuccessfullyPersistToStorage() thro
 1. 유저를 로컬 스토리지에 저장한다
 2. XCTAssertNotNil로 저장한 유저가 있는지 체크한다
 3. 테스트가 끝난 뒤 addTeardownBlock로 로컬 스토리지에 저장된 유저를 삭제한다
+
+---
+
+Creating a New Test Case Class
+
+애플리케이션 코드를 사용하기
+```swift
+import XCTest
+@testable import PhotoApp
+
+class XXXTests: XCTestCase {
+  // ...
+}
+```
+* @testable import 애플리케이션 모듈 이름
+  - 이 라인을 추가하면 애플리케이션에 있는 클래스 등 임포트한 모듈의 자원에 접근할 수 있다
