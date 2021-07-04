@@ -395,3 +395,26 @@ func testSignupFormModel_WhenInformationProvided_PasswordShouldMatchRepeatPasswo
 
 ---
 
+Ways to Disable or Skip Unit Test
+
+특정 유닛 테스트를 무시하도록 설정하기
+![#disable-menu](./imgs/disable-menu.png)
+* 무시할 메서드의 좌측 마름모를 우측 클릭하면 메뉴가 나온다
+* Disabled "testA()"를 클릭하면 테스트할 때 해당 메서드를 제외시킬 수 있다
+
+테스트 네비게이터에서 disabled된 테스트 메서드를 확인하기
+![#disabled-test](./imgs/disabled-test.png)
+
+스키마 수정하기 메뉴에서 disabled된 테스트 메서드를 확인하기
+* 우선 좌측 상단의 앱 스키마를 클릭한다
+
+![#edit-scheme](./imgs/edit-scheme.png)
+* Edit scheme... 버튼을 누른다
+
+Test -> Info 탭에서 확인할 수 있다
+![#disabled-menu-in-scheme](./imgs/disabled-menu-in-scheme.png)
+* 특정 테스트 메서드를 체크/해제하여 Enabled 혹은 Disabled 시킬 수 있다
+
+생략할 테스트 메서드라면 skip_을 앞에 붙여주기
+![#skip-naming](./imgs/skip-naming.png)
+* 엑스코드도 test로 시작하지 않기 때문에 자동으로 제외시켜주고, 다른 개발자도 이 테스트 메서드는 생략한다는 것을 명확하게 알 수 있다

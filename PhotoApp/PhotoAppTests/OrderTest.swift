@@ -10,7 +10,7 @@ class OrderTest: XCTestCase {
         print("tearDown")
     }
 
-    func testA() {
+    func skip_testA() {
         print("Running Test A")
     }
 
