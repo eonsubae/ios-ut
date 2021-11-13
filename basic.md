@@ -624,3 +624,23 @@ func testSignupFormValidator_WhenIlligalCharacterUsedInPassword_ShouldThrowError
   - 만약 에러가 발생하지 않으면 테스트는 실패한다
 * 에러가 발생하면 클로저로 해당 에러를 추가적으로 검증할 수 있다
   - 여기서는 발생한 에러가 AppErrors.PasswordContainsIlligalCharacter와 같은지를 검증하고 있다
+
+---
+
+Enabling the Failure Debugger Breakpoint
+
+테스트 실패
+* 때때로 알 수 없는 이유로 유닛 테스트가 실패하는 경험을 하게 될 것이다
+* 이 때 다음과 같은 순서로 유닛 테스트 코드와 실제 코드를 같이 체크해보는 것이 좋다
+* 우선 AAA 형식으로 테스트 코드가 분리되어 있지 않다면 형식에 맞게 분리한 뒤 다음 사항들을 체크해보자
+  - 입력 값들이 의도와 불일치하는가
+  - 적절한 테스트 함수를 사용했는가
+* 위 사항들을 체크했는데도 문제점이 보이지 않는다면 Xcode debugger를 사용해서 체크한다
+  - Xcode는 실패 지점에 Breakpoint를 찍어볼 수 있는 디버거를 지원해준다
+
+![#breakpoint-add](./imgs/breakpoint-add.png)
+* breakpoint navigator를 누른 뒤 아래 +버튼을 클릭한다
+* Test Failure Breakpoint를 누르면 테스트 코드의 Failure Breakpoint가 활성화된다
+* 만약 특정 테스트 케이스가 실패하면 해당 테스트 케이스 위치가 표시될 것이다
+* 해당 테스트 케이스의 디버깅 해볼 라인을 클릭해 일반적인 breakpoint를 설정해서 다시 테스트를 실행한다
+* Step In, Step Over를 눌러가며 어디서 문제가 발생하고 있는지를 점검해본다
