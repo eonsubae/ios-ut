@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14527F44273F814700038AFA /* SignupConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14527F42273F814700038AFA /* SignupConstants.swift */; };
+		14527F45273F814700038AFA /* SignupFormModelValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14527F43273F814700038AFA /* SignupFormModelValidator.swift */; };
+		14990DA1273F7B8700390547 /* Protocols in Resources */ = {isa = PBXBuildFile; fileRef = 14990D9E273F7B8700390547 /* Protocols */; };
+		14990DA2273F7B8700390547 /* Presenters in Resources */ = {isa = PBXBuildFile; fileRef = 14990D9F273F7B8700390547 /* Presenters */; };
+		14990DA3273F7B8700390547 /* Network in Resources */ = {isa = PBXBuildFile; fileRef = 14990DA0273F7B8700390547 /* Network */; };
+		14990DA7273F7BDE00390547 /* Signup in Resources */ = {isa = PBXBuildFile; fileRef = 14990DA6273F7BDE00390547 /* Signup */; };
+		14990DA9273F7CDA00390547 /* Models in Resources */ = {isa = PBXBuildFile; fileRef = 14990DA8273F7CDA00390547 /* Models */; };
+		14990DAB273F7CF200390547 /* Controllers in Resources */ = {isa = PBXBuildFile; fileRef = 14990DAA273F7CF200390547 /* Controllers */; };
+		14990DAD273F7DED00390547 /* SignupFormModelValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14990DAC273F7DED00390547 /* SignupFormModelValidatorTests.swift */; };
 		428C675A267443BA005AB39D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428C6759267443BA005AB39D /* AppDelegate.swift */; };
 		428C675C267443BA005AB39D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428C675B267443BA005AB39D /* SceneDelegate.swift */; };
 		428C675E267443BA005AB39D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428C675D267443BA005AB39D /* ViewController.swift */; };
@@ -37,6 +46,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		14527F42273F814700038AFA /* SignupConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignupConstants.swift; path = "../../PhotoAppUnitTesting-master/PhotoApp/SignupConstants.swift"; sourceTree = "<group>"; };
+		14527F43273F814700038AFA /* SignupFormModelValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignupFormModelValidator.swift; path = "../../PhotoAppUnitTesting-master/PhotoApp/SignupFormModelValidator.swift"; sourceTree = "<group>"; };
+		14990D9E273F7B8700390547 /* Protocols */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Protocols; sourceTree = "<group>"; };
+		14990D9F273F7B8700390547 /* Presenters */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Presenters; sourceTree = "<group>"; };
+		14990DA0273F7B8700390547 /* Network */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Network; sourceTree = "<group>"; };
+		14990DA6273F7BDE00390547 /* Signup */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Signup; sourceTree = "<group>"; };
+		14990DA8273F7CDA00390547 /* Models */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Models; path = "../../../PhotoAppUnitTesting-master/PhotoApp/Signup/Models"; sourceTree = "<group>"; };
+		14990DAA273F7CF200390547 /* Controllers */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Controllers; path = "../../../PhotoAppUnitTesting-master/PhotoApp/Signup/Controllers"; sourceTree = "<group>"; };
+		14990DAC273F7DED00390547 /* SignupFormModelValidatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignupFormModelValidatorTests.swift; path = "../../PhotoAppUnitTesting-master/PhotoAppTests/SignupFormModelValidatorTests.swift"; sourceTree = "<group>"; };
 		428C6756267443BA005AB39D /* PhotoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		428C6759267443BA005AB39D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		428C675B267443BA005AB39D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +98,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		14990D8E273F7A9A00390547 /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+				14990DAA273F7CF200390547 /* Controllers */,
+				14990DA8273F7CDA00390547 /* Models */,
+				14990DA0273F7B8700390547 /* Network */,
+				14990D9F273F7B8700390547 /* Presenters */,
+				14990D9E273F7B8700390547 /* Protocols */,
+			);
+			path = Signup;
+			sourceTree = "<group>";
+		};
 		428C674D267443BA005AB39D = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +133,9 @@
 		428C6758267443BA005AB39D /* PhotoApp */ = {
 			isa = PBXGroup;
 			children = (
+				14527F42273F814700038AFA /* SignupConstants.swift */,
+				14527F43273F814700038AFA /* SignupFormModelValidator.swift */,
+				14990D8E273F7A9A00390547 /* Signup */,
 				428C6759267443BA005AB39D /* AppDelegate.swift */,
 				428C675B267443BA005AB39D /* SceneDelegate.swift */,
 				428C675D267443BA005AB39D /* ViewController.swift */,
@@ -117,6 +150,8 @@
 		428C676F267443BE005AB39D /* PhotoAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				14990DAC273F7DED00390547 /* SignupFormModelValidatorTests.swift */,
+				14990DA6273F7BDE00390547 /* Signup */,
 				428C6770267443BE005AB39D /* PhotoAppTests.swift */,
 				428C6772267443BE005AB39D /* Info.plist */,
 				42C79EF726914AC60086CE64 /* TearDownTestExample.swift */,
@@ -238,7 +273,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				428C6766267443BE005AB39D /* LaunchScreen.storyboard in Resources */,
+				14990DA2273F7B8700390547 /* Presenters in Resources */,
+				14990DAB273F7CF200390547 /* Controllers in Resources */,
 				428C6763267443BE005AB39D /* Assets.xcassets in Resources */,
+				14990DA3273F7B8700390547 /* Network in Resources */,
+				14990DA1273F7B8700390547 /* Protocols in Resources */,
+				14990DA9273F7CDA00390547 /* Models in Resources */,
 				428C6761267443BA005AB39D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -247,6 +287,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14990DA7273F7BDE00390547 /* Signup in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,8 +306,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				428C675E267443BA005AB39D /* ViewController.swift in Sources */,
+				14527F45273F814700038AFA /* SignupFormModelValidator.swift in Sources */,
 				428C675A267443BA005AB39D /* AppDelegate.swift in Sources */,
 				428C675C267443BA005AB39D /* SceneDelegate.swift in Sources */,
+				14527F44273F814700038AFA /* SignupConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +319,7 @@
 			files = (
 				42C79EFD2691558D0086CE64 /* OrderTest.swift in Sources */,
 				42C79EF826914AC60086CE64 /* TearDownTestExample.swift in Sources */,
+				14990DAD273F7DED00390547 /* SignupFormModelValidatorTests.swift in Sources */,
 				428C6771267443BE005AB39D /* PhotoAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

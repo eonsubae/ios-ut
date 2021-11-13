@@ -12,7 +12,7 @@ class OrderTest: XCTestCase {
 
     func testA() {
         print("Running Test A")
-        XCTFail("Always failing unit test")
+//        XCTFail("Always failing unit test")
     }
 
     func testB() {

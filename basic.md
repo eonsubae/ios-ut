@@ -453,3 +453,26 @@ func testA() {
 ![#test-report](./imgs/test-report.png)
 
 ---
+
+Code coverage
+
+코드 커버리지 옵션
+
+![#edit-scheme](./imgs/edit-scheme.png)
+* 화면의 Scheme Editor에서 Edit Scheme을 클릭한다 
+
+![#code-coverage](./imgs/code-coverage.png)
+* Test의 Options로 들어가 Code Coverage 옵션 옆의 체크박스를 활성화시킨뒤 Close 버튼을 눌러 창을 닫는다
+* 이제부턴 유닛 테스트를 돌릴 때마다 Xcode가 여러 데이터를 수집해서 코드 커버리지 리포트를 생성해 줄 것이다
+
+![#coverage-each-file](./imgs/coverage-each-file.png)
+* 테스트를 실행하고 Report Navigator에서 테스트마다 각 파일의 Coverage를 확인할 수 있다
+
+![#coverage-call-time](./imgs/coverage-call-time.png)
+* 특정 파일에 들어가면 테스트를 위해 각 부분이 몇번씩 호출되었는지 숫자가 표기된다
+* 테스트가 통과되었을 시 사진과 같이 녹색이 뜨며, 실패할 시 빨간색이 뜬다
+
+100% Code coverage
+* 코드 커버리지가 100%에 도달했다고해서 애플리케이션에 버그가 없고 완벽하게 작동할 것이라고 생각해서는 안된다
+* 어디까지나 작성된 테스트 코드 안에서 문제가 없는 것이며 파악하지 못한 문제가 발생할 수 있다
+* 코드 커버리지 수치에 집중하기 보다는 빠뜨린 부분은 없는지를 생각하며 철저하게 테스트를 작성하기 위해 노력해야 한다
