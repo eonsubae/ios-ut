@@ -644,3 +644,21 @@ Enabling the Failure Debugger Breakpoint
 * 만약 특정 테스트 케이스가 실패하면 해당 테스트 케이스 위치가 표시될 것이다
 * 해당 테스트 케이스의 디버깅 해볼 라인을 클릭해 일반적인 breakpoint를 설정해서 다시 테스트를 실행한다
 * Step In, Step Over를 눌러가며 어디서 문제가 발생하고 있는지를 점검해본다
+
+---
+
+Parallel Distributed Testing on Multiple Simulator Clones
+
+복수의 시뮬레이터를 실행해 보다 빠르게 테스트하기
+* parallel distribution이 unable되면 Xcode는 시뮬레이터를 여러개 실행해서 테스트를 수행한다
+* 어떤 시뮬레이터를 실행할지, 얼마나 많은 시뮬레이터를 실행할지 설정할 수 있다
+* 각 시뮬레이터에 얼마나 많은 테스트 케이스가 실행될지는 Xcode가 알아서 판단해준다(설정 불가)
+
+![#parallel-distribution](./imgs/parallel-distribution.png)
+* Preferences에서 General탭에 들어가면 몇 개의 시뮬레이터를 사용할 것인지 설정할 수 있다
+
+![#parallel-setting](./imgs/parallel-setting.png)
+* Edit scheme으로 들어가 Test의 Info에서 Options를 누르고 Execute in parallel(if possible) 옵션을 체크하면 활성화된다
+
+![#parallel-setting](./imgs/parallel-setting.png)
+* 테스트를 돌리고 로그를 누르면 각 시뮬레이터에서 어떤 테스트를 수행했는지 확인할 수 있다
