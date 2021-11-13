@@ -476,3 +476,36 @@ Code coverage
 * 코드 커버리지가 100%에 도달했다고해서 애플리케이션에 버그가 없고 완벽하게 작동할 것이라고 생각해서는 안된다
 * 어디까지나 작성된 테스트 코드 안에서 문제가 없는 것이며 파악하지 못한 문제가 발생할 수 있다
 * 코드 커버리지 수치에 집중하기 보다는 빠뜨린 부분은 없는지를 생각하며 철저하게 테스트를 작성하기 위해 노력해야 한다
+
+---
+
+Test Method Code Structure. Arrange, Act, Assert
+
+읽기 쉬운 테스트 메서드 작성하기(AAA)
+* 테스트 메서드의 각 부분을 나눠서 규칙성있게 작성하면 관리가 쉬워진다
+
+```swift
+func testSignupFormModel_WhenInformationProvided_PasswordsShouldMatch() {
+
+  // Arrange(Given)
+  let firstName = "Eonsu"
+  let lastName = "Bae"
+  let email = "eonsubae@gmail.com"
+  let password = "12345678"
+  let repeatPassword = "12345678"
+  let sut = SignupFormModel(firstName: firstName, lastName: lastName, email: email, password: password, repeatPassword: repeatPassword)
+
+  // Act(When)
+  let passwordsMatch = sut.doPasswordsMatch()
+
+  // Assert(Then)
+  XCTAssertTrue(passwordsMatch, "Expected TRUE value for 'passwordsMatch' but apparently it is FALSE")
+}
+```
+* Arrange는 테스트에 필요한 모든 멤버변수를 작성하는 곳이다
+* Act는 테스트하려는 함수를 실제로 호출하는 곳이다. 검증을 위해 함수의 반환값을 저장하기도 한다
+* Assert는 테스트 결과 통과되었는지 실패인지를 검증하는 곳이다. 
+  - XCTAssertTrue는 검증값이 true이길 기대하는 검증함수다
+  - 검증결과가 false이면 두 번째 인자의 문장이 출력된다
+
+---
