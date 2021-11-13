@@ -506,6 +506,121 @@ func testSignupFormModel_WhenInformationProvided_PasswordsShouldMatch() {
 * Act는 테스트하려는 함수를 실제로 호출하는 곳이다. 검증을 위해 함수의 반환값을 저장하기도 한다
 * Assert는 테스트 결과 통과되었는지 실패인지를 검증하는 곳이다. 
   - XCTAssertTrue는 검증값이 true이길 기대하는 검증함수다
-  - 검증결과가 false이면 두 번째 인자의 문장이 출력된다
+  - 검증결과가 false이면 두 번째 인자의 문장이 출력된다. 이 두 번째 인자는 옵셔널이지만 추가해주는 것이 더 좋은 습관이다.
 
 ---
+
+Assertions
+
+```swift
+func testSignupFormModel_WhenInformationProvided_PasswordsShouldMatch() {
+
+  // Arrange(Given)
+  let firstName = "Eonsu"
+  let lastName = "Bae"
+  let email = "eonsubae@gmail.com"
+  let password = "12345678"
+  let repeatPassword = "12345678"
+  let sut = SignupFormModel(firstName: firstName, lastName: lastName, email: email, password: password, repeatPassword: repeatPassword)
+
+  // Act(When)
+  let passwordsMatch = sut.doPasswordsMatch()
+
+  // Assert(Then)
+  XCTAssertTrue(passwordsMatch, "Expected TRUE value for 'passwordsMatch' but apparently it is FALSE", file: "SignupFormModelTests.swift", line: 36)
+}
+```
+* XCTAssertTrue에는 추가로 두 가지 인자를 작성할 수 있다(옵셔널)
+* file을 추가하면 테스트 케이스가 실패했을 때 어느 파일에서 실패한 것인지 보다 쉽게 파악할 수 있어 추가해주는 것이 좋다
+* line을 추가하는 것도 마찬가지다
+
+## Various Assertions
+
+### Boolean Test Assertions
+
+검증값이 참이거나 거짓이길 기대하는 함수
+
+* XCTAssertTrue : XCTAssertTrue(expression, "optional description") 검증 값이 True이길 기대하는 함수
+* XCTAssertFalse : XCTAssertFalse(expression, "optional description") 검증 값이 False이길 기대하는 함수
+
+### Nil Test Assertions
+
+검증값이 nil이거나 nil이 아니길 기대하는 함수
+
+* XCTAssertNil : XCTAssertNil(expression, "optional description") 검증 값이 nil이길 기대하는 함수
+* XCTAssertNotNil: XCTAssertNotNil(expression, "optional description") 검증 값이 nil이 아니길 기대하는 함수
+* XCTUnwrap: 검증값이 nil이 아니고, 래핑되지 않은 값을 반환하길 기대하는 함수
+
+### Equality Test Assertions
+
+두 값의 관계를 검증하는 함수
+
+* XCTAssertEqual : XCTAssertEqual(expression1, expression2, "optional description") 두 값이 일치하길 기대하는 함수
+* XCTAssertNotEqual : XCTAssertNotEqual(expression1, expression2, "optional description") 두 값이 불일치하길 기대하는 함수
+* XCTAssertGreaterThan : XCTAssertGreaterThan(expression1, expression2, "optional description") 한 값이 다른 값보다 크기를 기대하는 함수
+* XCTAssertLessThan : XCTAssertLessThan(expression1, expression2, "optional description") 한 값이 다른 값보다 작기를 기대하는 함수
+* XCTAssertLessThanOrEqual : XCTAssertLessThanOrEqual(expression1, expression2, "optional description") 한 값이 다른 값보다 작거나 같기를 기대하는 함수
+* XCTAssertEqualWithAccuracy : XCTAssertEqualWithAccuracy(expression1, expression2, accuracy, "optional description") 두 값이 일정 범위 안에서 일치하기를 기대하는 함수
+
+XCTAssertEqualWithAccuracy는 deprecated되었지만 조금 다른 방식으로 사용되고 있다
+* XCTAssertEqual(49.2827, 49.2826, accuracy: 0.001)
+  - 두 값이 0.001이라는 오차 안에서 일치하기를 기대하는 함수다
+  - longitude, latitude처럼 일정 오차를 허용해야 하는 값을 검증할 때 유용하다
+
+### Unconditional Failure
+
+값의 검증과 무관하게 즉시 실패를 반환하는 함수
+
+* XCTFail : XCTFail("optional description") 상태에 관계없이 호출되는 즉시 실패한다
+
+아래 예제와 같은 상황에서 사용할 수 있다
+
+```swift
+func testSignupFormValidator_WhenIlligalCharacterUsedInPassword_ShouldThrowError() {
+  // Arrange(Given)
+  let signupFormModel = SignupFormModel(firstName: "Eonsu", 
+                                        lastName: "Bae", 
+                                        email: "eonsubae@gmail.com", 
+                                        password: "12345678", 
+                                        repeatPassword: "12345678")
+  let sut = SignupFormValidator(formModel: SignupFormModel)                
+
+  // Act(When)
+  do {
+    _ = try sut.isValidPassword()
+    XCTFail("Provided password contains an illegal character but an error was not thrown.")
+  } catch {
+    // Assert(Then)
+    XCTAssertEqual(error as? AppErrors, AppErrors.PasswordContainsIlligalCharacter, "An error took place but not the one expected. Expected error is PasswordContainsIlligalCharacter")
+  }
+}
+```
+* password가 정책상 허용될 수 없는 값임에도 통과되었다면 즉시 실패시키기 위해 사용하고 있다
+
+### Exception Tests
+
+검증값이 예외를 발생시키는지 검증하는 함수
+
+* XCTAssertThrowsError : XCTAssertThrowsError(expression, "optional description") expressions이 에러를 발생시키기를 기대하는 함수
+* XCTAssertNoThrow : XCTAssertNoThrow(expression, "optional description") expressions이 에러를 발생시키지 않기를 기대하는 함수
+
+```swift
+func testSignupFormValidator_WhenIlligalCharacterUsedInPassword_ShouldThrowError() {
+  // Arrange(Given)
+  let signupFormModel = SignupFormModel(firstName: "Eonsu", 
+                                        lastName: "Bae", 
+                                        email: "eonsubae@gmail.com", 
+                                        password: "1234567{8}", // Invalid character 
+                                        repeatPassword: "12345678")
+  let sut = SignupFormValidator(formModel: SignupFormModel)                
+
+  // Act(When) and Assert(Then)
+  XCTAssertThrowsError(try sut.isValidPassword(), "A PasswordContainsIlligalCharacter Error should have been thrown but no Error was thrown") { error in
+    XCTAssertEqual(error as? AppErrors, AppErrors.PasswordContainsIlligalCharacter, "An error took place but not the one expected. Expected error is PasswordContainsIlligalCharacter")
+  }
+}
+```
+* password에 부적절한 문자가 포함되어 있으므로 sut.isValidPassword()가 에러를 발생시키길 기대한다(XCTAssertThrowsError)
+  - 만약 에러가 발생하지 않으면 테스트는 실패한다
+* 에러가 발생하면 클로저로 해당 에러를 추가적으로 검증할 수 있다
+  - 여기서는 발생한 에러가 AppErrors.PasswordContainsIlligalCharacter와 같은지를 검증하고 있다
