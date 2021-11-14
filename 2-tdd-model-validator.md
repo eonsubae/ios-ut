@@ -138,3 +138,96 @@ class SignupFormModelValidatorTests: XCTestCase {
 * 실제로 완성한 함수를 호출한 값을 변수로 저장한 뒤, 참인지 검증하는 테스트 메서드를 호출한다
 * 이렇게 first name을 검증하는 테스트 함수가 완성됐다. 실제로 테스트를 돌려보면 성공하는 것을 확인할 수 있을 것이다
 * 성공했다면 firstname 인자를 빈문자열로 바꿔서 실패하는지 다시 테스트를 돌려보자.
+
+---
+
+Test for a very short First Name
+
+이번엔 first name의 길이가 2 이상인지를 테스트해보자
+
+```swift
+class SignupFormModelValidatorTests: XCTestCase {
+    // (...)
+    
+    func testSignupFormModelValidator_WhenTooShortFirstNameProvided_ShouldReturnFalse() {
+        
+        // Arrange
+        let sut = SignupFormModelValidator()
+        
+        // Act
+        let isFirstNameValid = sut.isFirstNameValid(firstname: "S")
+        
+        // Assert
+        XCTAssertFalse(isFirstNameValid, "The isFirstNameValid() should have returned FALSE for a first name that is shorter than 2 characters but it has returned TRUE")
+    }
+}
+```
+* first name을 길이가 1인 문자열로 보내고 False를 리턴하기를 기대하는 테스트 함수를 호출한다
+* 테스트를 돌려보면 isFirstNameValid 메서드에 first name의 길이를 체크하는 로직이 없기 때문에 실패할 것이다
+* 이제 문자열의 길이를 체크하는 로직을 추가해주자
+
+```swift
+class SignupFormModelValidator {
+    
+    func isFirstNameValid(firstname: String) -> Bool {
+        var returnValue = true
+        
+        if firstname.count < 2 {
+            returnValue = false
+        }
+        
+        return returnValue
+    }
+}
+```
+* 위와 같이 코드를 수정하면 빈문자열이거나, 길이가 1인 문자열일 때를 함께 걸러낼 수 있다
+* 이제 다시 테스트를 돌려보면 통과하는 것을 확인할 수 있을 것이다
+
+테스트 코드에서 사용되는 공통 변수를 setUp으로 옮기기
+* 지금까지 작성한 두 테스트 메서드 모두 SignupFormModelValidator을 생성하고 있다
+* 코드의 중복을 없애기 위해 이 코드를 setUp으로 옮겨주자
+
+```swift
+import XCTest
+@testable import PhotoApp
+
+class SignupFormModelValidatorTests: XCTestCase {
+
+    var sut: SignupFormModelValidator!
+    
+    override func setUpWithError() throws {
+        // Put setup code here. This method is called before the invocation of each test method in the class.
+        sut = SignupFormModelValidator()
+    }
+
+    override func tearDownWithError() throws {
+        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        sut = nil
+    }
+
+    func testSignupFormModelValidator_WhenValidFirstNameProvided_ShouldReturnTrue() {
+        
+        // Arrange
+        
+        // Act
+        let isFirstNameValid = sut.isFirstNameValid(firstname: "Eonsu")
+        
+        // Assert
+        XCTAssertTrue(isFirstNameValid, "The isFirstNameValid() should have returned TRUE for a valid first name but returned FALSE")
+    }
+    
+    func testSignupFormModelValidator_WhenTooShortFirstNameProvided_ShouldReturnFalse() {
+        
+        // Arrange
+        
+        // Act
+        let isFirstNameValid = sut.isFirstNameValid(firstname: "S")
+        
+        // Assert
+        XCTAssertFalse(isFirstNameValid, "The isFirstNameValid() should have returned FALSE for a first name that is shorter than 2 characters but it has returned TRUE")
+    }
+}
+```
+* tearDown에서 공통변수를 nil로 만들어 리소스 낭비를 줄이는 작업도 잊지말자
+
+---
