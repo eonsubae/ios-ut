@@ -231,3 +231,101 @@ class SignupFormModelValidatorTests: XCTestCase {
 * tearDown에서 공통변수를 nil로 만들어 리소스 낭비를 줄이는 작업도 잊지말자
 
 ---
+
+Test for a very long First Name
+
+first name이 10자 보다 긴 경우를 테스트해보자
+
+```swift
+class SignupFormModelValidatorTests: XCTestCase {
+    // (...)
+    
+    func testSignupFormModelValidator_WhenTooLongFirstNameProvided_ShouldReturnFalse() {
+        
+        // Arrange
+        
+        // Act
+        let isFirstNameValid = sut.isFirstNameValid(firstname: "abcdefghijkfqef")
+        
+        // Assert
+        XCTAssertFalse(isFirstNameValid, "The isFirstNameValid() should have returned FALSE for a first name that is longer than 10 characters but it has returned TRUE")
+    }
+}
+```
+* 위와 같이 작성하고 테스트를 실행해보면 실패할 것이다
+* 이제 실제 메서드에서 길이가 10보다 길 때 false를 리턴하도록 수정하자
+
+```swift
+class SignupFormModelValidator {
+    
+    func isFirstNameValid(firstname: String) -> Bool {
+        var returnValue = true
+        
+        if firstname.count < 2 || firstname.count > 10 {
+            returnValue = false
+        }
+        
+        return returnValue
+    }
+}
+```
+* 위와 같이 수정하고 다시 테스트를 돌려보면 통과할 것이다
+
+보다 코드를 읽기 쉽도록 리팩토링하기
+
+```swift
+struct SignupConstants {
+    static let firstNameMinLength = 2
+    static let fisrtNameMaxLength = 10
+}
+```
+* 우선 회원가입 조건들을 저장할 구조체를 하나 만들어 최소 길이와 최대 길이 변수를 만든다
+* 메서드와 테스트 코드에 이 변수들을 반영해주자
+
+```swift
+class SignupFormModelValidator {
+    
+    func isFirstNameValid(firstname: String) -> Bool {
+        var returnValue = true
+        
+        if firstname.count < SignupConstants.firstNameMinLength || firstname.count > SignupConstants.fisrtNameMaxLength {
+            returnValue = false
+        }
+        
+        return returnValue
+    }
+}
+```
+* 2, 10으로 하드코딩 되어있을 때보다 어떤 조건을 검증하려는 것인지를 보다 쉽게 파악할 수 있게 되었다
+
+```swift
+class SignupFormModelValidatorTests: XCTestCase {
+    // (...)
+    
+    func testSignupFormModelValidator_WhenTooShortFirstNameProvided_ShouldReturnFalse() {
+        
+        // Arrange
+        
+        // Act
+        let isFirstNameValid = sut.isFirstNameValid(firstname: "S")
+        
+        // Assert
+        XCTAssertFalse(isFirstNameValid, "The isFirstNameValid() should have returned FALSE for a first name that is shorter than \(SignupConstants.firstNameMinLength) characters but it has returned TRUE")
+    }
+    
+    func testSignupFormModelValidator_WhenTooLongFirstNameProvided_ShouldReturnFalse() {
+        
+        // Arrange
+        
+        // Act
+        let isFirstNameValid = sut.isFirstNameValid(firstname: "abcdefghijkfqef")
+        
+        // Assert
+        XCTAssertFalse(isFirstNameValid, "The isFirstNameValid() should have returned FALSE for a first name that is longer than \(SignupConstants.fisrtNameMaxLength) characters but it has returned TRUE")
+    }
+}
+```
+* 게다가 최소, 최대 길이의 변경이 있을 때 테스트 코드와 메서드 코드 모두 SignupConstants에서 한 번만 변경하면 두 곳을 동시에 관리할 수 있게됐다
+
+---
+

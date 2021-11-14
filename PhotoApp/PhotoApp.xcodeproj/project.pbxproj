@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		14527F4927413CDF00038AFA /* SignupFormModelValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14527F4827413CDF00038AFA /* SignupFormModelValidatorTests.swift */; };
 		14527F4B27413EAE00038AFA /* SignupFormModelValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14527F4A27413EAE00038AFA /* SignupFormModelValidator.swift */; };
+		14527F4D2741565D00038AFA /* SignupConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14527F4C2741565D00038AFA /* SignupConstants.swift */; };
 		428C675A267443BA005AB39D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428C6759267443BA005AB39D /* AppDelegate.swift */; };
 		428C675C267443BA005AB39D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428C675B267443BA005AB39D /* SceneDelegate.swift */; };
 		428C675E267443BA005AB39D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428C675D267443BA005AB39D /* ViewController.swift */; };
@@ -38,6 +39,7 @@
 /* Begin PBXFileReference section */
 		14527F4827413CDF00038AFA /* SignupFormModelValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupFormModelValidatorTests.swift; sourceTree = "<group>"; };
 		14527F4A27413EAE00038AFA /* SignupFormModelValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupFormModelValidator.swift; sourceTree = "<group>"; };
+		14527F4C2741565D00038AFA /* SignupConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupConstants.swift; sourceTree = "<group>"; };
 		428C6756267443BA005AB39D /* PhotoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		428C6759267443BA005AB39D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		428C675B267443BA005AB39D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				428C6764267443BE005AB39D /* LaunchScreen.storyboard */,
 				428C6767267443BE005AB39D /* Info.plist */,
 				14527F4A27413EAE00038AFA /* SignupFormModelValidator.swift */,
+				14527F4C2741565D00038AFA /* SignupConstants.swift */,
 			);
 			path = PhotoApp;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				428C675E267443BA005AB39D /* ViewController.swift in Sources */,
 				428C675A267443BA005AB39D /* AppDelegate.swift in Sources */,
 				14527F4B27413EAE00038AFA /* SignupFormModelValidator.swift in Sources */,
+				14527F4D2741565D00038AFA /* SignupConstants.swift in Sources */,
 				428C675C267443BA005AB39D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
