@@ -122,13 +122,13 @@ TDD의 네 가지 스텝
 
 The Default Unit Test Case Class Explained
 
-![#test-cases](./imgs/testcases.png)
+![#test-cases](./imgs/basic/testcases.png)
 * setUp 메서드는 각 유닛 테스트 함수가 실행되기 전에 호출된다
 * 각 유닛 테스트 함수의 실행이 끝나면 tearDown 메서드가 호출된다
 * 이 과정을 계속 반복한다
 * setUp이나 tearDown을 class method로 override하면 첫 테스트 메서드가 호출될 때 딱 한 번만 호출된다
 
-![#override-setup](./imgs/override-setup.png)
+![#override-setup](./imgs/basic/override-setup.png)
 
 ```swift
 class PhotoAppTests: XCTestCase {
@@ -306,18 +306,18 @@ class XXXTests: XCTestCase {
 Ways to Run Unit Test in Xcode
 
 개별 메서드 실행
-![#individual-test-method](./imgs/individual-test-method.png)
+![#individual-test-method](./imgs/basic/individual-test-method.png)
 * Xcode에서 개별 테스트 메서드의 좌측에 있는 마름모를 누르면 해당 메서드만 테스트할 수 있다
 * 만약 클래스 안에 다른 테스트 메서드가 있다면 클래스 옆의 마름모는 -인 상태일 것이다
 
 테스트 네비게이터 이용하기
 
-![#test-navigator](./imgs/test-navigator.png)
+![#test-navigator](./imgs/basic/test-navigator.png)
 * 테스트 네비게이터에서도 동일하게 동작한다
 * 테스트 케이스 목록을 보고 싶다면 네비게이터를 이용하는 것이 좋다
 
 클래스 안의 모든 케이스가 테스트 된 경우
-![#all-tested](./imgs/all-tested.png)
+![#all-tested](./imgs/basic/all-tested.png)
 * 클래스의 모든 테스트 케이스가 통과되면 클래스 옆의 마름모가 녹색 체크 표시로 변경된다
 
 ---
@@ -398,25 +398,25 @@ func testSignupFormModel_WhenInformationProvided_PasswordShouldMatchRepeatPasswo
 Ways to Disable or Skip Unit Test
 
 특정 유닛 테스트를 무시하도록 설정하기
-![#disable-menu](./imgs/disable-menu.png)
+![#disable-menu](./imgs/basic/disable-menu.png)
 * 무시할 메서드의 좌측 마름모를 우측 클릭하면 메뉴가 나온다
 * Disabled "testA()"를 클릭하면 테스트할 때 해당 메서드를 제외시킬 수 있다
 
 테스트 네비게이터에서 disabled된 테스트 메서드를 확인하기
-![#disabled-test](./imgs/disabled-test.png)
+![#disabled-test](./imgs/basic/disabled-test.png)
 
 스키마 수정하기 메뉴에서 disabled된 테스트 메서드를 확인하기
 * 우선 좌측 상단의 앱 스키마를 클릭한다
 
-![#edit-scheme](./imgs/edit-scheme.png)
+![#edit-scheme](./imgs/basic/edit-scheme.png)
 * Edit scheme... 버튼을 누른다
 
 Test -> Info 탭에서 확인할 수 있다
-![#disabled-menu-in-scheme](./imgs/disabled-menu-in-scheme.png)
+![#disabled-menu-in-scheme](./imgs/basic/disabled-menu-in-scheme.png)
 * 특정 테스트 메서드를 체크/해제하여 Enabled 혹은 Disabled 시킬 수 있다
 
 생략할 테스트 메서드라면 skip_을 앞에 붙여주기
-![#skip-naming](./imgs/skip-naming.png)
+![#skip-naming](./imgs/basic/skip-naming.png)
 * 엑스코드도 test로 시작하지 않기 때문에 자동으로 제외시켜주고, 다른 개발자도 이 테스트 메서드는 생략한다는 것을 명확하게 알 수 있다
 
 ---
@@ -435,7 +435,7 @@ func testA() {
 * 우선 한 테스트를 항상 실패하도록 만든다
 * 테스트를 돌린 후 다음 스크린샷과 동일한 메뉴를 찾아 선택한다
 
-![#test-console](./imgs/test-console.png)
+![#test-console](./imgs/basic/test-console.png)
 * 콘솔에서 테스트 결과를 자세히 확인할 수 있다
 
 ---
@@ -443,14 +443,14 @@ func testA() {
 2. 테스트 네비게이터에서 보기
 * 성공 및 실패 목록을 한눈에 볼 수 있다
 
-![#test-navi](./imgs/test-navi.png)
+![#test-navi](./imgs/basic/test-navi.png)
 
 --- 
 
 3. 테스트 리포트를 확인하기
 * 그동안 테스트를 돌렸던 결과들을 볼 수 있다
 
-![#test-report](./imgs/test-report.png)
+![#test-report](./imgs/basic/test-report.png)
 
 ---
 
@@ -458,17 +458,17 @@ Code coverage
 
 코드 커버리지 옵션
 
-![#edit-scheme](./imgs/edit-scheme.png)
+![#edit-scheme](./imgs/basic/edit-scheme.png)
 * 화면의 Scheme Editor에서 Edit Scheme을 클릭한다 
 
-![#code-coverage](./imgs/code-coverage.png)
+![#code-coverage](./imgs/basic/code-coverage.png)
 * Test의 Options로 들어가 Code Coverage 옵션 옆의 체크박스를 활성화시킨뒤 Close 버튼을 눌러 창을 닫는다
 * 이제부턴 유닛 테스트를 돌릴 때마다 Xcode가 여러 데이터를 수집해서 코드 커버리지 리포트를 생성해 줄 것이다
 
-![#coverage-each-file](./imgs/coverage-each-file.png)
+![#coverage-each-file](./imgs/basic/coverage-each-file.png)
 * 테스트를 실행하고 Report Navigator에서 테스트마다 각 파일의 Coverage를 확인할 수 있다
 
-![#coverage-call-time](./imgs/coverage-call-time.png)
+![#coverage-call-time](./imgs/basic/coverage-call-time.png)
 * 특정 파일에 들어가면 테스트를 위해 각 부분이 몇번씩 호출되었는지 숫자가 표기된다
 * 테스트가 통과되었을 시 사진과 같이 녹색이 뜨며, 실패할 시 빨간색이 뜬다
 
@@ -638,7 +638,7 @@ Enabling the Failure Debugger Breakpoint
 * 위 사항들을 체크했는데도 문제점이 보이지 않는다면 Xcode debugger를 사용해서 체크한다
   - Xcode는 실패 지점에 Breakpoint를 찍어볼 수 있는 디버거를 지원해준다
 
-![#breakpoint-add](./imgs/breakpoint-add.png)
+![#breakpoint-add](./imgs/basic/breakpoint-add.png)
 * breakpoint navigator를 누른 뒤 아래 +버튼을 클릭한다
 * Test Failure Breakpoint를 누르면 테스트 코드의 Failure Breakpoint가 활성화된다
 * 만약 특정 테스트 케이스가 실패하면 해당 테스트 케이스 위치가 표시될 것이다
@@ -654,11 +654,11 @@ Parallel Distributed Testing on Multiple Simulator Clones
 * 어떤 시뮬레이터를 실행할지, 얼마나 많은 시뮬레이터를 실행할지 설정할 수 있다
 * 각 시뮬레이터에 얼마나 많은 테스트 케이스가 실행될지는 Xcode가 알아서 판단해준다(설정 불가)
 
-![#parallel-distribution](./imgs/parallel-distribution.png)
+![#parallel-distribution](./imgs/basic/parallel-distribution.png)
 * Preferences에서 General탭에 들어가면 몇 개의 시뮬레이터를 사용할 것인지 설정할 수 있다
 
-![#parallel-setting](./imgs/parallel-setting.png)
+![#parallel-setting](./imgs/basic/parallel-setting.png)
 * Edit scheme으로 들어가 Test의 Info에서 Options를 누르고 Execute in parallel(if possible) 옵션을 체크하면 활성화된다
 
-![#parallel-setting](./imgs/parallel-setting.png)
+![#parallel-setting](./imgs/basic/parallel-setting.png)
 * 테스트를 돌리고 로그를 누르면 각 시뮬레이터에서 어떤 테스트를 수행했는지 확인할 수 있다
