@@ -336,4 +336,198 @@ Unit testing tips
 * 실제로 작성할 코드를 위해서만 유닛테스트를 만들자
 * 테스트를 작성할 때는 어떻게가 아닌 무엇을 테스트할지에 집중하자
 
+first name과 유사하게 last name, email, password도 TDD 방식으로 코드를 작성해보자
+* 아래는 완성된 코드다
+
+```swift
+// 테스트
+import XCTest
+@testable import PhotoApp
+
+class SignupFormModelValidatorTests: XCTestCase {
+
+    var sut: SignupFormModelValidator!
+    
+    override func setUpWithError() throws {
+        // Put setup code here. This method is called before the invocation of each test method in the class.
+        sut = SignupFormModelValidator()
+    }
+
+    override func tearDownWithError() throws {
+        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        sut = nil
+    }
+
+    func testSignupFormModelValidator_WhenValidFirstNameProvided_ShouldReturnTrue() {
+        
+        // Arrange
+        
+        // Act
+        let isFirstNameValid = sut.isFirstNameValid(firstname: "Eonsu")
+        
+        // Assert
+        XCTAssertTrue(isFirstNameValid, "The isFirstNameValid() should have returned TRUE for a valid first name but returned FALSE")
+    }
+    
+    func testSignupFormModelValidator_WhenTooShortFirstNameProvided_ShouldReturnFalse() {
+        
+        // Arrange
+        
+        // Act
+        let isFirstNameValid = sut.isFirstNameValid(firstname: "S")
+        
+        // Assert
+        XCTAssertFalse(isFirstNameValid, "The isFirstNameValid() should have returned FALSE for a first name that is shorter than \(SignupConstants.firstNameMinLength) characters but it has returned TRUE")
+    }
+    
+    func testSignupFormModelValidator_WhenTooLongFirstNameProvided_ShouldReturnFalse() {
+        
+        // Arrange
+        
+        // Act
+        let isFirstNameValid = sut.isFirstNameValid(firstname: "abcdefghijkfqef")
+        
+        // Assert
+        XCTAssertFalse(isFirstNameValid, "The isFirstNameValid() should have returned FALSE for a first name that is longer than \(SignupConstants.firstNameMaxLength) characters but it has returned TRUE")
+    }
+    
+    func testSignupFormModelValidator_WhenValidLastNameProvided_ShouldReturnTrue() {
+        
+        // Arrange
+        
+        // Act
+        let isLastNameValid = sut.isLastNameValid(lastname: "Bae")
+        
+        // Assert
+        XCTAssertTrue(isLastNameValid, "The isLastNameValid() should have returned TRUE for a valid last name but returned FALSE")
+    }
+    
+    func testSignupFormModelValidator_WhenTooShortLastNameProvided_ShouldReturnFalse() {
+        
+        // Arrange
+        
+        // Act
+        let isLastNameValid = sut.isLastNameValid(lastname: "B")
+        
+        // Assert
+        XCTAssertFalse(isLastNameValid, "The isLastNameValid() should have returned FALSE for a last name that is shorter than \(SignupConstants.lastNameMinLength) characters but it has returned TRUE")
+    }
+    
+    func testSignupFormModelValidator_WhenTooLongLastNameProvided_ShouldReturnFalse() {
+        
+        // Arrange
+        
+        // Act
+        let isLastNameValid = sut.isLastNameValid(lastname: "BaeBaeBaeBaeBae")
+        
+        // Assert
+        XCTAssertFalse(isLastNameValid, "The isLastNameValid() should have returned FALSE for a last name that is longer than \(SignupConstants.lastNameMaxLength) characters but it has returned TRUE")
+    }
+    
+    func testSignupFormModelValidator_WhenValidEmailProvided_ShouldReturnTrue() {
+        
+        // Arrange
+        
+        // Act
+        let isEmailValid = sut.isEmailValid(address: "eonsubae@gmail.com")
+        
+        // Assert
+        XCTAssertTrue(isEmailValid, "The isEmailValid() should have returned TRUE for a valid email address but returned FALSE")
+    }
+    
+    func testSignupFormModelValidator_WhenValidPasswordProvided_ShouldReturnTrue() {
+        
+        // Arrange
+        
+        // Act
+        let isPasswordValid = sut.isPasswordValid(password: "f!0qipefjeqwpqwe")
+        
+        // Assert
+        XCTAssertTrue(isPasswordValid, "The isPasswordValid() should have returned TRUE for a valid password but returned FALSE")
+    }
+    
+    func testSignupFormModelValidator_WhenTooShortPasswordProvided_ShouldReturnFalse() {
+        
+        // Arrange
+        
+        // Act
+        let isPasswordValid = sut.isPasswordValid(password: "f!0")
+        
+        // Assert
+        XCTAssertFalse(isPasswordValid, "The isPasswordValid() should have returned FALSE for a password that is shorter than \(SignupConstants.passwordMinLength) characters but it has returned TRUE")
+    }
+    
+    func testSignupFormModelValidator_WhenTooLongPasswordProvided_ShouldReturnFalse() {
+        
+        // Arrange
+        
+        // Act
+        let isPasswordValid = sut.isPasswordValid(password: "f!0qerwrerqerqwrqwerqwerqwr0qerwrerqerqwrqwerqwerqwr")
+        
+        // Assert
+        XCTAssertFalse(isPasswordValid, "The isPasswordValid() should have returned FALSE for a password that is longer than \(SignupConstants.passwordMaxLength) characters but it has returned TRUE")
+    }
+}
+
+```
+
+
+```swift
+// 실제 코드
+import Foundation
+
+class SignupFormModelValidator {
+    
+    func isFirstNameValid(firstname: String) -> Bool {
+        var returnValue = true
+        
+        if firstname.count < SignupConstants.firstNameMinLength || firstname.count > SignupConstants.firstNameMaxLength {
+            returnValue = false
+        }
+        
+        return returnValue
+    }
+    
+    func isLastNameValid(lastname: String) -> Bool {
+        var returnValue = true
+        
+        if lastname.count < SignupConstants.lastNameMinLength || lastname.count > SignupConstants.lastNameMaxLength {
+            returnValue = false
+        }
+        
+        return returnValue
+    }
+    
+    func isEmailValid(address: String) -> Bool {
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", SignupConstants.emailAddressRegex)
+        
+        return emailPred.evaluate(with: address)
+    }
+    
+    func isPasswordValid(password: String) -> Bool {
+        let passwordPred = NSPredicate(format: "SELF MATCHES %@ ", SignupConstants.passwordRegex)
+
+        return passwordPred.evaluate(with: password)
+    }
+}
+```
+
+
+```swift
+// 상수
+import Foundation
+
+struct SignupConstants {
+    static let firstNameMinLength = 2
+    static let firstNameMaxLength = 10
+    static let lastNameMinLength = 2
+    static let lastNameMaxLength = 10
+    static let emailAddressRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+    static let passwordMinLength = 4
+    static let passwordMaxLength = 16
+    static let passwordRegex = "^(?=.*[a-z])(?=.*[$@$#!%*?&]).{\(passwordMinLength),\(passwordMaxLength)}$"
+}
+```
+* 작성된 조건들은 애플리케이션 요구사항에 따라 다를 수 있다
+
 ---
