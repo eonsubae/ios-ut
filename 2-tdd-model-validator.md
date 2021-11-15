@@ -585,3 +585,50 @@ class SignupFormModelValidatorTests: XCTestCase {
 }
 ```
 * 테스트를 실행해보면 통과하는 것을 확인할 수 있을 것이다
+
+---
+
+Test if user passwords do not match
+
+이번에는 네거티브한 케이스인 패스워드가 매치되지 않는 경우를 테스트해보자
+
+```swift
+class SignupFormModelValidatorTests: XCTestCase {
+    // (...)
+    func testSignupFormModelValidator_WhenNotMatchPasswordsProvided_ShouldReturnFalse() {
+        
+        // Arrange
+        
+        // Act
+        let doPasswordsMatch = sut.doPasswordsMatch(password: "djfpqq0!www", repeatPassword: "djfpqq0!aaa")
+        
+        // Assert
+        XCTAssertFalse(doPasswordsMatch, "The doPasswordsMatch() should have returned FALSE for passwords that do not match but it has returned TRUE")
+    }
+}
+```
+* 테스트를 실행해보면 통과할 것이다
+
+패스워드 매치를 검증하는 로직 리팩토링하기
+
+```swift
+class SignupFormModelValidator {
+    // (...)
+    
+    func doPasswordsMatch(password: String, repeatPassword: String) -> Bool {
+        /* 기존 로직
+        var returnValue = true
+        
+        if password != repeatPassword {
+            returnValue = false
+        }
+        
+        return returnValue
+        */
+
+        return password == repeatPassword
+    }
+}
+```
+* 로직이 간단하므로 보다 간결하게 처리할 수 있도록 코드를 변경했다
+* 다시 테스트를 실행해 통과하는지 확인해보자
