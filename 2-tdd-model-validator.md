@@ -531,3 +531,57 @@ struct SignupConstants {
 * 작성된 조건들은 애플리케이션 요구사항에 따라 다를 수 있다
 
 ---
+
+Test if user passwords match
+
+반복 입력된 패스워드가 매칭되는지 확인하는 코드를 TDD방식으로 작성해보자
+
+```swift
+class SignupFormModelValidatorTests: XCTestCase {
+    // (...)
+    func testSignupFormModelValidator_WhenEqualPasswordsProvided_ShouldReturnTrue() {
+        
+        // Arrange
+        
+        // Act
+        let doPasswordsMatch = sut.doPasswordsMatch(password: "djfpqq0!", repeatPassword: "djfpqq0!")
+        
+        // Assert
+    }
+}
+```
+* 아직 SignupFormModelValidator에는 doPasswordsMatch 메서드가 없어서 에러가 발생할 것이다
+
+```swift
+class SignupFormModelValidator {
+    // (...)
+    
+    func doPasswordsMatch(password: String, repeatPassword: String) -> Bool {
+        var returnValue = true
+        
+        if password != repeatPassword {
+            returnValue = false
+        }
+        
+        return returnValue
+    }
+}
+```
+* 구현이 끝났으니 검증 함수를 호출해 확인해보자
+
+```swift
+class SignupFormModelValidatorTests: XCTestCase {
+    // (...)
+    func testSignupFormModelValidator_WhenEqualPasswordsProvided_ShouldReturnTrue() {
+        
+        // Arrange
+        
+        // Act
+        let doPasswordsMatch = sut.doPasswordsMatch(password: "djfpqq0!", repeatPassword: "djfpqq0!")
+        
+        // Assert
+        XCTAssertTrue(doPasswordsMatch, "The doPasswordsMatch() should have returned TRUE for matching passwords but it has returned FALSE")
+    }
+}
+```
+* 테스트를 실행해보면 통과하는 것을 확인할 수 있을 것이다
