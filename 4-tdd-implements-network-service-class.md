@@ -193,7 +193,7 @@ func testSignupWebService_WhenGivenSuccessfulResponse_ReturnsSuccess() {
 }
 ```
 * signupResponseModel은 회원가입 응답용 구조체로 SignupResponseModel의 인스턴스다
-* error는 회원가입 요청 에러로 SignupErrors의 인스턴스다
+* error는 회원가입이 실패했을 때 받는 열거형으로 된 에러값이며 SignupErrors의 인스턴스다
 * 아직 컴플리션 핸들러가 구현되어있지 않아 에러가 발생할 것이다
 
 ```swift
@@ -222,4 +222,17 @@ struct SignupResponseModel: Decodable {
 }
 ```
 * SignupResponseModel은 회원가입이 성공했을 때 받게되는 응답 객체다
-* JSON, XML 등의 형식으로 반환되는 데이터를 swift에서 사용하기 위해 Decodable 프로토콜을 따라야한다
+* JSON, XML 등의 형식으로 반환되는 데이터를 swift에서 사용하기 위해 Decodable 프로토콜을 따르게 해야한다
+
+Implementing the initial SignupErrors Enum
+
+```swift
+import Foundation
+
+enum SignupErrors: Error {
+    
+}
+```
+* SignupErrors 열거형을 에러로 사용하기 위해 Error 프로토콜을 따르게 해야한다
+
+---
