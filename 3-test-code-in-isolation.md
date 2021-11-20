@@ -127,7 +127,7 @@ struct SignupFormModelDummy: SignupFormModelProtocol {
 * SignupFormModelDummy 같은 더미 객체에 특정 임시값을 저장해두면 테스트하여 불필요한 작업을 최소화시킬 수 있다
 
 스텁(Stub)
-* 더미 객체와 유사하지만 실제 데이터가 사용되거나 검증(validate)용으로 사용될 수 있다는 점이 다르다
+* 더미 객체와 유사하지만 실제 데이터처럼 사용되거나 검증(validate)용으로 사용될 수 있다는 점이 다르다
 * 스텁의 목적은 시스템이 특정 방식으로 동작하도록 만드는 것이다. 아래 예시를 보자
 
 ```swift
