@@ -211,3 +211,15 @@ class SignupWebService {
 * 이 객체들을 구현해주자
 
 ---
+
+Implementing the initial SignupResponseModel
+
+```swift
+import Foundation
+
+struct SignupResponseModel: Decodable {
+    
+}
+```
+* SignupResponseModel은 회원가입이 성공했을 때 받게되는 응답 객체다
+* JSON, XML 등의 형식으로 반환되는 데이터를 swift에서 사용하기 위해 Decodable 프로토콜을 따라야한다
