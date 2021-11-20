@@ -18,9 +18,7 @@ class SignupWebServiceTests: XCTestCase {
         
         // Act
         sut.signup(withForm: signupFormRequestModel) { (signupResponseModel, error) in
-            
+            // Assert
         }
-        
-        // Assert
     }
 }

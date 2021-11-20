@@ -90,6 +90,69 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1457E02C2748C6A30049EE53 /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+				1457E02F2748C71F0049EE53 /* Network */,
+				1457E02E2748C6FA0049EE53 /* Controllers */,
+				1457E02D2748C6B40049EE53 /* Models */,
+			);
+			path = Signup;
+			sourceTree = "<group>";
+		};
+		1457E02D2748C6B40049EE53 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				14527F4C2741565D00038AFA /* SignupConstants.swift */,
+				14527F4A27413EAE00038AFA /* SignupFormModelValidator.swift */,
+				1418C1492748BF920010EF52 /* SignupFormRequestModel.swift */,
+				1457E0282748C4830049EE53 /* SignupResponseModel.swift */,
+				1457E02A2748C57E0049EE53 /* SignupErrors.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1457E02E2748C6FA0049EE53 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				428C675D267443BA005AB39D /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		1457E02F2748C71F0049EE53 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				1418C1472748BDCA0010EF52 /* SignupWebService.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		1457E0302748C73C0049EE53 /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+				1457E0322748C7520049EE53 /* Network */,
+				1457E0312748C74E0049EE53 /* Models */,
+			);
+			path = Signup;
+			sourceTree = "<group>";
+		};
+		1457E0312748C74E0049EE53 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				14527F4827413CDF00038AFA /* SignupFormModelValidatorTests.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1457E0322748C7520049EE53 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				1418C1452748BC650010EF52 /* SignupWebServiceTests.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		428C674D267443BA005AB39D = {
 			isa = PBXGroup;
 			children = (
@@ -113,19 +176,13 @@
 		428C6758267443BA005AB39D /* PhotoApp */ = {
 			isa = PBXGroup;
 			children = (
+				1457E02C2748C6A30049EE53 /* Signup */,
 				428C6759267443BA005AB39D /* AppDelegate.swift */,
 				428C675B267443BA005AB39D /* SceneDelegate.swift */,
-				428C675D267443BA005AB39D /* ViewController.swift */,
 				428C675F267443BA005AB39D /* Main.storyboard */,
 				428C6762267443BE005AB39D /* Assets.xcassets */,
 				428C6764267443BE005AB39D /* LaunchScreen.storyboard */,
 				428C6767267443BE005AB39D /* Info.plist */,
-				14527F4A27413EAE00038AFA /* SignupFormModelValidator.swift */,
-				14527F4C2741565D00038AFA /* SignupConstants.swift */,
-				1418C1472748BDCA0010EF52 /* SignupWebService.swift */,
-				1418C1492748BF920010EF52 /* SignupFormRequestModel.swift */,
-				1457E0282748C4830049EE53 /* SignupResponseModel.swift */,
-				1457E02A2748C57E0049EE53 /* SignupErrors.swift */,
 			);
 			path = PhotoApp;
 			sourceTree = "<group>";
@@ -133,9 +190,8 @@
 		428C676F267443BE005AB39D /* PhotoAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				1457E0302748C73C0049EE53 /* Signup */,
 				428C6772267443BE005AB39D /* Info.plist */,
-				14527F4827413CDF00038AFA /* SignupFormModelValidatorTests.swift */,
-				1418C1452748BC650010EF52 /* SignupWebServiceTests.swift */,
 			);
 			path = PhotoAppTests;
 			sourceTree = "<group>";

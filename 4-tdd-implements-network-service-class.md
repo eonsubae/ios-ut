@@ -236,3 +236,15 @@ enum SignupErrors: Error {
 * SignupErrors 열거형을 에러로 사용하기 위해 Error 프로토콜을 따르게 해야한다
 
 ---
+
+Organize Project Folders
+
+잠시 테스트를 멈추고 폴더 구조를 정리하기
+* 지금까지는 모델 객체, 서비스 객체, 요청용/응답용 객체 등 성격이 다른 여러 객체를 프로젝트 폴더 한 계층에 몰아넣고 있었다
+* 이 객체들을 성격에 따라 분리해 프로젝트를 구조화하자
+
+![#tdd-network-folder-structure](./imgs/tdd-impl-networking/project-org.png)
+* 위와 같은 구조로 반드시 구성할 필요는 없다
+* 프로젝트마다 사용하는 아키텍쳐, 개발자들의 철학에 맞게 구성하면 된다
+
+---
