@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1418C1462748BC650010EF52 /* SignupWebServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1418C1452748BC650010EF52 /* SignupWebServiceTests.swift */; };
 		14527F4927413CDF00038AFA /* SignupFormModelValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14527F4827413CDF00038AFA /* SignupFormModelValidatorTests.swift */; };
 		14527F4B27413EAE00038AFA /* SignupFormModelValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14527F4A27413EAE00038AFA /* SignupFormModelValidator.swift */; };
 		14527F4D2741565D00038AFA /* SignupConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14527F4C2741565D00038AFA /* SignupConstants.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1418C1452748BC650010EF52 /* SignupWebServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupWebServiceTests.swift; sourceTree = "<group>"; };
 		14527F4827413CDF00038AFA /* SignupFormModelValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupFormModelValidatorTests.swift; sourceTree = "<group>"; };
 		14527F4A27413EAE00038AFA /* SignupFormModelValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupFormModelValidator.swift; sourceTree = "<group>"; };
 		14527F4C2741565D00038AFA /* SignupConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupConstants.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 			children = (
 				428C6772267443BE005AB39D /* Info.plist */,
 				14527F4827413CDF00038AFA /* SignupFormModelValidatorTests.swift */,
+				1418C1452748BC650010EF52 /* SignupWebServiceTests.swift */,
 			);
 			path = PhotoAppTests;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1418C1462748BC650010EF52 /* SignupWebServiceTests.swift in Sources */,
 				14527F4927413CDF00038AFA /* SignupFormModelValidatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
