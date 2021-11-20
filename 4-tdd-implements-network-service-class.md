@@ -30,20 +30,77 @@ class SignupWebServiceTests: XCTestCase {
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
+}
+```
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+---
+
+Create Initial SignupWebService Class
+
+```swift
+import XCTest
+
+class SignupWebServiceTests: XCTestCase {
+
+    override func setUpWithError() throws {
+        // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    override func tearDownWithError() throws {
+        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    }
+
+    func testSignupWebService_WhenGivenSuccessfulResponse_ReturnsSuccess() {
+        // Arrange
+        let sut = SignupWebService()
+        
+        // Act
+        
+        // Assert
     }
 }
 ```
+* 우선 SignupWebService가 회원가입에 성공했다는 응답을 받았을 때를 테스트하는 메서드를 생성해보자
+* 테스트 대상인 SignupWebService 인스턴스를 Arrange에 생성하면 클래스가 없기 때문에 에러가 발생할 것이다
+* 실제로 SignupWebService 클래스를 만들어주자
+
+```swift
+// SignupWebService.swift
+
+import Foundation
+
+class SignupWebService {
+    
+}
+
+// SignupWebServiceTests.swift
+
+import XCTest
+@testable import PhotoApp
+
+class SignupWebServiceTests: XCTestCase {
+
+    override func setUpWithError() throws {
+        // Put setup code here. This method is called before the invocation of each test method in the class.
+    }
+
+    override func tearDownWithError() throws {
+        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    }
+
+    func testSignupWebService_WhenGivenSuccessfulResponse_ReturnsSuccess() {
+        // Arrange
+        let sut = SignupWebService()
+        
+        // Act
+        
+        // Assert
+    }
+}
+```
+* 간단한 형식만 갖춘 클래스를 정의해둔다
+* 그리고 테스트 파일에는 PhotoApp을 import한다
+* 이제 테스트 케이스내의 에러가 사라졌을 것이다
 
 ---
 

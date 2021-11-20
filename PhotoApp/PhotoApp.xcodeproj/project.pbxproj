@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1418C1462748BC650010EF52 /* SignupWebServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1418C1452748BC650010EF52 /* SignupWebServiceTests.swift */; };
+		1418C1482748BDCA0010EF52 /* SignupWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1418C1472748BDCA0010EF52 /* SignupWebService.swift */; };
 		14527F4927413CDF00038AFA /* SignupFormModelValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14527F4827413CDF00038AFA /* SignupFormModelValidatorTests.swift */; };
 		14527F4B27413EAE00038AFA /* SignupFormModelValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14527F4A27413EAE00038AFA /* SignupFormModelValidator.swift */; };
 		14527F4D2741565D00038AFA /* SignupConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14527F4C2741565D00038AFA /* SignupConstants.swift */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		1418C1452748BC650010EF52 /* SignupWebServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupWebServiceTests.swift; sourceTree = "<group>"; };
+		1418C1472748BDCA0010EF52 /* SignupWebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupWebService.swift; sourceTree = "<group>"; };
 		14527F4827413CDF00038AFA /* SignupFormModelValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupFormModelValidatorTests.swift; sourceTree = "<group>"; };
 		14527F4A27413EAE00038AFA /* SignupFormModelValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupFormModelValidator.swift; sourceTree = "<group>"; };
 		14527F4C2741565D00038AFA /* SignupConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupConstants.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				428C6767267443BE005AB39D /* Info.plist */,
 				14527F4A27413EAE00038AFA /* SignupFormModelValidator.swift */,
 				14527F4C2741565D00038AFA /* SignupConstants.swift */,
+				1418C1472748BDCA0010EF52 /* SignupWebService.swift */,
 			);
 			path = PhotoApp;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				428C675A267443BA005AB39D /* AppDelegate.swift in Sources */,
 				14527F4B27413EAE00038AFA /* SignupFormModelValidator.swift in Sources */,
 				14527F4D2741565D00038AFA /* SignupConstants.swift in Sources */,
+				1418C1482748BDCA0010EF52 /* SignupWebService.swift in Sources */,
 				428C675C267443BA005AB39D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
