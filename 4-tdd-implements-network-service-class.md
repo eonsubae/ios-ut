@@ -104,3 +104,69 @@ class SignupWebServiceTests: XCTestCase {
 
 ---
 
+Implementing SignupFormRequestModel
+
+```swift
+func testSignupWebService_WhenGivenSuccessfulResponse_ReturnsSuccess() {
+    // Arrange
+    let sut = SignupWebService()
+    let signupFormRequestModel = SignupFormRequestModel()
+    
+    // Act
+    sut.signup(withForm: signupFormRequestModel)
+    
+    // Assert
+}
+```
+* signup 메서드에 회원가입 정보를 담은 요청용 모델인 SignupFormRequestModel의 인스턴스를 넘겨주도록 구현할 것이다
+* 실제로 SignupFormRequestModel객체와 signup 메서드를 생성하지 않았기 때문에 에러가 발생할 것이다
+
+```swift
+// SignupFormRequestModel.swift
+import Foundation
+
+struct SignupFormRequestModel {
+    
+}
+
+
+// SignupWebService.swift
+import Foundation
+
+class SignupWebService {
+    
+    func signup(withForm formModel: SignupFormRequestModel) {
+        
+    }
+}
+```
+* 이제 테스트 케이스의 에러가 사라졌을 것이다
+
+```swift
+func testSignupWebService_WhenGivenSuccessfulResponse_ReturnsSuccess() {
+    // Arrange
+    let sut = SignupWebService()
+    let signupFormRequestModel = SignupFormRequestModel(firstName: "Eonsu", lastName: "Bae", email: "bes@gmail.com", password: "qejwqpwexzjcas1!")
+    
+    // Act
+    sut.signup(withForm: signupFormRequestModel)
+    
+    // Assert
+}
+```
+* 요청 모델에 실제 회원가입 모델처럼 firstname, lastname, email, password를 생성자 파라미터로 넘겨주자
+* SignupFormRequestModel의 프로퍼티가 테스트처럼 구현되어있지 않아 에러가 발생할 것이다
+* SignupFormRequestModel의 프로퍼티를 구현하자
+
+```swift
+import Foundation
+
+struct SignupFormRequestModel: Encodable {
+    let firstName: String
+    let lastName: String
+    let email: String
+    let password: String
+}
+```
+* 테스트가 통과하도록 프로퍼티를 입력하고 JSON으로 변환이 가능하게 해주는 Encodable 프로토콜을 상속받게했다
+* 테스트를 확인해보면 에러가 사라졌을 것이다
