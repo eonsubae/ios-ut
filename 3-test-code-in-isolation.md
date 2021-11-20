@@ -29,3 +29,64 @@
 * 멤버변수로 특정객체를 소유해야 할 때는 생성자 혹은 프로퍼티에 특정 프로토콜을 따르는 객체를 주입받도록 구현한다
 
 ---
+
+프로토콜 사용하기(Use of Protocols)
+
+의존성 주입으로 격리된 테스트 환경을 구축하기 위해 프로토콜을 잘 사용해야 한다
+* 프로토콜은 메서드나 프로퍼티, 그 외의 여러 요구사항들의 블루프린트를 작성해놓는 객체다
+
+```swift
+protocol SignupModelValidatorProtocol {
+    func isFirstNameValid(firstName: String) -> Bool
+    func isValidEmailFormat(email: String) -> Bool
+    func isValidPasswordLength(password: String) -> Bool
+}
+```
+* 앞서 구현했던 테스트들의 프로토콜을 작성하면 위와 같을 것이다
+* 이 프로토콜을 따르면 반드시 나열된 조건들을 충족하도록 실제로 아래와 같이 구현해야 한다
+
+```swift
+class SignupModelSimpleValidator: SignupModelValidatorProtocol {
+    func isFirstNameValid(firstName: String) -> Bool {
+        // Code here
+        return returnValue
+    }
+
+    func isValidEmailFormat(email: String) -> Bool {
+        // Code here
+        return returnValue
+    }
+
+    func isValidPasswordLength(password: String) -> Bool {
+        // Code here
+        return returnValue
+    }
+}
+```
+
+프로토콜을 따르는 목 객체를 만들어 격리하기
+
+```swift
+protocol SignupWebServiceProtocol {
+    func signup(withForm formModel: SignupFormModel, completionHandler: @escaping (SignupResponseModel?, SignupErrors?) -> Void)
+}
+
+class SignupWebServiceMock: SignupWebServiceProtocol {
+    func signup(withForm formModel: SignupFormModel, completionHandler: @escaping (SignupResponseModel?, SignupErrors?) -> Void) {
+        completionHandler(SignupResponseModel(status: "ok"), nil)
+    }
+}
+```
+* 목 객체는 SignupResponseModel이라는 외부 객체를 생성할 때 항상 성공하도록 하드코딩된 값으로 생성하고 있다
+* 이 객체를 주입해서 테스트하면 의존관계인 실제 서비스 객체의 실패 여부와 무관하게 테스트하려는 대상에 집중할 수 있다
+
+```swift
+let signupWebServiceMock = SignupWebServiceMock()
+signupPresenter.processUserSignup(formModel: formModel, webservice: signupWebServiceMock) // Inject mock
+
+func processUserSignup(formModel: SignupFormModel, webservice: SignupWebServiceProtocol) {
+    webservice.signup(withForm: formModel) { [weak self] (signupResponseModel, error) in
+        // Code
+    }
+}
+```
