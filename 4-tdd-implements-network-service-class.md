@@ -170,3 +170,44 @@ struct SignupFormRequestModel: Encodable {
 ```
 * 테스트가 통과하도록 프로퍼티를 입력하고 JSON으로 변환이 가능하게 해주는 Encodable 프로토콜을 상속받게했다
 * 테스트를 확인해보면 에러가 사라졌을 것이다
+
+---
+
+Adding CompletionHandler to Signup Method Signature
+* 회원가입 요청은 비동기로 이루어진다
+* 따라서 요청이 완료된 타이밍에 작업을 수행하려면 컴플리션 핸들러를 넘겨줘야 한다
+* 우선 테스트에 클로저를 추가하자
+
+```swift
+func testSignupWebService_WhenGivenSuccessfulResponse_ReturnsSuccess() {
+    // Arrange
+    let sut = SignupWebService()
+    let signupFormRequestModel = SignupFormRequestModel(firstName: "Eonsu", lastName: "Bae", email: "bes@gmail.com",password: "qejwqpwexzjcas1!")
+    
+    // Act
+    sut.signup(withForm: signupFormRequestModel) { (signupResponseModel, error) in
+        
+    }
+    
+    // Assert
+}
+```
+* signupResponseModel은 회원가입 응답용 구조체로 SignupResponseModel의 인스턴스다
+* error는 회원가입 요청 에러로 SignupErrors의 인스턴스다
+* 아직 컴플리션 핸들러가 구현되어있지 않아 에러가 발생할 것이다
+
+```swift
+import Foundation
+
+class SignupWebService {
+    
+    func signup(withForm formModel: SignupFormRequestModel, completionHandler: @escaping (SignupResponseModel, SignupErrors?) -> Void) {
+        
+    }
+}
+```
+* 테스트를 확인해보면 에러가 사라져있을 것이다
+* 하지만 아직 SignupResponseModel과 SignupErrors이 구현되어 있지 않아 SignupWebService에는 에러가 발생하고 있다
+* 이 객체들을 구현해주자
+
+---
